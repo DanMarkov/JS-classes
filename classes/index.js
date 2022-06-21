@@ -1,23 +1,15 @@
 class User {
-    constructor(firstName, lastName) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-    }
+  get age() {
+    console.log('age getter');
+    return this._age;
+  }
 
-    getFullName() {
-        return `${this.firstName} ${this.lastName}`;
-    }
-
-    getGreetings() {
-        const fullName = this.getFullName();
-        return `Hello, ${fullName}`;
-    }
-
-    getUpperCased() {
-        return this.getGreetings().toUpperCase();
-    }
+  set age(value) {
+    console.log('age setter');
+    this._age = Number.parseInt(value, 10);
+  }
 }
 
-const user1 = new User("Roxy","Rose");
-
-console.log(user1.getUpperCased());
+const user = new User();
+user.age = '20'; // calls set age(value)
+console.log(user.age); // calls get age(), returns 20
